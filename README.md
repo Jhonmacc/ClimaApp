@@ -1,3 +1,5 @@
+## Sistema básico que traz as informações de clima por cidade.
+
 ## API's Utilizadas 
 
 ## API do clima está nesse site https://openweathermap.org/ é preciso realizar o cadastro no site
