@@ -1,8 +1,11 @@
 // Variáveis e seleção de elementos
 
-const apiKey = "COLOQUE A CHAVE DA API AQUI";
+const apiKey = "COLOQUE A CHAVE DA API DO CLIMA AQUI";
 
+//API DAS BANDEIRAS DOS PAÍSES
 const apiCountryURL = "https://countryflagsapi.com/png/";
+
+// API DO UNSPLASH SITE DE IMAGENS
 const apiUnsplash = "https://source.unsplash.com/1600x900/?";
 
 const cityInput = document.querySelector("#city-input");
@@ -11,7 +14,7 @@ const searchBtn = document.querySelector("#search");
 
 const cityElement = document.querySelector("#city");
 const tempElement = document.querySelector("#temperature span");
-const descElement= document.querySelector("#description");
+const descElement = document.querySelector("#description");
 const weatherIconElement = document.querySelector("#weather-icon");
 const countryElement = document.querySelector("#country");
 const humidityElement = document.querySelector("#humidity span");
@@ -26,7 +29,7 @@ const suggestionContainer = document.querySelector("#suggestions");
 const suggestionButtons = document.querySelectorAll("#suggestions button");
 
 
-// Funções
+// FUNÇÕES
 const toggleLoader = () => {
   loader.classList.toggle("hide");
 };
@@ -34,14 +37,14 @@ const toggleLoader = () => {
 
 
 //Função que faz a chamada da API e Acesso as informações de dados.
-const getWeatherData = async(city) => {
+const getWeatherData = async (city) => {
 
-const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
-  
-    const res = await fetch(apiWeatherURL);
-    const data = await res.json();
+  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
-    return data;
+  const res = await fetch(apiWeatherURL);
+  const data = await res.json();
+
+  return data;
 };
 
 // Tratamento de erro
@@ -76,11 +79,11 @@ const showWeatherData = async (city) => {
   humidityElement.innerText = `${data.main.humidity}%`;
   windElement.innerText = `${data.wind.speed}km/h`;
 
-// Change bg image
-document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
+  // Troca bg da image quando faz a busca
+  document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
 
 
-weatherContainer.classList.remove("hide");
+  weatherContainer.classList.remove("hide");
 
 };
 
@@ -95,7 +98,7 @@ searchBtn.addEventListener("click", (e) => {
 
 
   showWeatherData(city);
-  
+
 });
 
 // Evento pra busca apertando o botão ENTER na pesquisa.
